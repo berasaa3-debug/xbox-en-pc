@@ -1,0 +1,19 @@
+PARA GENERAR Xbox en PC.exe
+
+No se puede compilar un ejecutable nativo de Windows desde este entorno Linux.
+He incluido dos formas de compilarlo:
+
+OPCIÓN A — En un PC Windows:
+1. Instala Python 3 desde python.org.
+2. Descomprime este proyecto.
+3. Ejecuta CREAR_EXE_EN_WINDOWS.bat.
+4. El EXE aparecerá en dist\Xbox en PC.exe.
+
+OPCIÓN B — GitHub Actions:
+1. Crea un repositorio en GitHub y sube el contenido de esta carpeta (incluida .github).
+2. Abre la pestaña Actions.
+3. Ejecuta el workflow "Build Xbox en PC for Windows".
+4. Al terminar, descarga el artefacto "Xbox-en-PC-Windows".
+   Dentro estará Xbox en PC.exe.
+
+No se ha generado ni adjuntado un EXE falso. El workflow compila el código en un runner real de Windows.

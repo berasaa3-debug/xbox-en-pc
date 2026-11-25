@@ -1,0 +1,29 @@
+# Xbox en PC — launcher con comprobación de GitHub
+
+## Crear el EXE
+1. Windows 10/11 + Python 3 instalado.
+2. Ejecuta `CREAR_EXE_EN_WINDOWS.bat`.
+3. El ejecutable quedará en `dist\\Xbox en PC.exe`.
+
+## Incluye
+- Interfaz oscura Matrix.
+- Biblioteca para XCL, VIctory y Hyphen.
+- Detección local mediante accesos directos y registro de Windows.
+- Comprobación de GitHub Releases.
+- Descarga de assets oficiales publicados (.exe, .msi, .zip).
+- ZIP extraído a una carpeta de la aplicación; el usuario puede seleccionar luego el ejecutable.
+- Confirmación antes de ejecutar instaladores.
+
+## Estado actual de los repositorios (comprobado el 25-11-2026)
+Los tres repositorios no muestran actualmente releases publicados. Por tanto, el botón de instalar/actualizar avisará de que no hay un paquete instalable en Releases; no intenta compilar ni ejecutar código fuente automáticamente.
+Repositorios:
+- https://github.com/xcl-dev/xcl
+- https://github.com/Marvisak/VIctory
+- https://github.com/fxceless/victory-fork
+
+## Límites
+- El actualizador usa GitHub Releases, no compila desde código fuente.
+- Si el proyecto publica un .exe/.msi/.zip oficial, se podrá descargar.
+- Un ZIP puede contener varios archivos: hay que elegir el ejecutable principal manualmente.
+- No se ejecutan actualizaciones silenciosas ni se reemplazan archivos sin confirmación.
+- Los proyectos experimentales pueden requerir archivos de juego propios y hardware/software específico.
