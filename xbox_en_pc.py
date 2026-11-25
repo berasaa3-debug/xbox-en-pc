@@ -121,7 +121,34 @@ class Launcher:
         self.ui.place(relx=0.5, rely=0.5, anchor="center", relwidth=0.84, relheight=0.91)
         self.build()
 
-    def load_config(self):
+    def auto_detect(self, save=False):
+        found = discover_windows_apps()
+        games = self.config.setdefault("games", {})
+
+        for game in GAMES:
+            name = game["name"]
+            path = found.get(name.lower())
+            if path and (not games.get(name) or not Path(games[name]).exists()):
+                games[name] = path
+
+        if save:
+            self.save_config()
+        return found
+
+    def detect_and_refresh(self):
+        found = self.auto_detect(save=True)
+        self.build()
+
+        if found:
+            messagebox.showinfo(
+                "Detección completada",
+                "Se han detectado aplicaciones compatibles."
+            )
+        else:
+            messagebox.showinfo(
+                "Detección completada",
+                "No se han encontrado aplicaciones instaladas. Puedes elegir sus .exe manualmente."
+            )
         try:
             return json.loads(CONFIG_FILE.read_text(encoding="utf-8"))
         except Exception:
