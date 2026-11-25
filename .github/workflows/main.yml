@@ -1,0 +1,32 @@
+
+name: Build Xbox en PC for Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar PyInstaller
+        run: pip install pyinstaller
+
+      - name: Crear EXE
+        run: pyinstaller --noconfirm --onefile --windowed --name "Xbox en PC" xbox_en_pc.py
+
+      - name: Guardar EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: Xbox-en-PC-Windows
+          path: dist/Xbox en PC.exe
